@@ -3,7 +3,7 @@ import Button    from 'react-bootstrap/Button';
 
 const List = props => {
     let list;
-    if(props.data !== undefined || props.data.data !== null) {
+    if(props.data !== undefined ) {
       list =  props.data.map(elem => {
           let todoTitle = !elem.isCompleted ? elem.data : <strike><b>{elem.data}</b></strike>;
           let id = elem._id;
