@@ -35,31 +35,12 @@ function todoReducer(state, event) {
           }
       },
 
-      NOENTCREATING: {
-          fetch:  {
-              ...state,
-              status:  'LOADING'
-          }, 
-          reject:  {
-              ...state,
-              status: 'FAILURE',
-              error: event.error
-          }
- 
-      },
- 
       UPDATING: {
           fetch:  {
               ...state,
               status:  'LOADING',
           }, 
-          noent:  {
-              ...state,
-              status:     'NOENTCREATING',
-              noEntQuery:  event.noEntQuery,
-              isCompleted: event.isCompleted
-          },
-          reject:  {
+         reject:  {
               ...state,
               status: 'FAILURE',
               error: event.error

@@ -18,7 +18,6 @@ function Todos() {
                                      data: [],
                                      error: null,
                                      id: null,
-                                     noEntQuery: null,
                                      isCompleted: false,
                                      isInputDisabled: true 
   };
@@ -38,11 +37,6 @@ function Todos() {
     dispatch({type: 'fetch'});
    }
 
-// Not implemented
-   function noEntCreate() {
-    dispatch({type: 'failure'});
-   }
-
     function read() {
      const data = todoData;  
      dispatch({type: 'resolve',  data});
@@ -57,7 +51,6 @@ function Todos() {
      });
      setTodoData(newTodos);
      dispatch({type: 'fetch'});
-    // error, not implemented: from this error => noEntCreate (IDK if it is possible)  
    }
 
   function remove() {
@@ -71,16 +64,11 @@ function Todos() {
      create();
    }
 
-   if(state.status === 'NOENTCREATING' ) {
-     noEntCreate();
-   }
-      
    // READ
    if(state.status === 'LOADING') {
      read();
    }
 
-      
    // UPDATE 
    if(state.status === 'UPDATING' ) {
       update();
