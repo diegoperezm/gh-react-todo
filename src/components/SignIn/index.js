@@ -1,5 +1,5 @@
 import   React                  from 'react';
-import { useState            }  from 'react';
+import { useState, useEffect }  from 'react';
 
 import Row                      from 'react-bootstrap/Row';
 import Col                      from 'react-bootstrap/Col';
@@ -13,18 +13,28 @@ const INITIALSTATE = {
 
 
 /*
- AT THE MOMENT THIS IS ONLY TO SHOW A COMPONENT, 
- THIS IS NOT WORKING
+ * Naive implementation of user auth 
 */
 const SignInFormBase = (props) => {
-  const [userInfo, setUserInfo] = useState(INITIALSTATE);
-  const [error ] = useState(null);
+  const [userInfo, setUserInfo]   = useState(INITIALSTATE);
+  const [error, setError ]        = useState(false);
 
   const onSubmit = event => {
     event.preventDefault();
-    props.setUser(true);
+      if(userInfo.email === 'test@test.com' && userInfo.password === 'pass') {
+        props.setUser(true);
+      } else {
+        setError(true);
+      }
   };
 
+  useEffect( () => {
+      if(error) {
+        alert(' email: test@test.com \n password: pass');
+        setError(false);
+      }
+  }, [error] );
+    
   const onChange = event => {
     const {name, value} = event.target;
       setUserInfo((userInfo) => ({...userInfo, [name]: value}));
@@ -58,7 +68,6 @@ const SignInFormBase = (props) => {
         >
         Sign In
       </Button>
-      {error && <p>{error.message}</p>}
     </Form>
   );
 }
