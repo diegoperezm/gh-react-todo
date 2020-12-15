@@ -89,7 +89,7 @@ function Todos() {
      return (
    <Row >
       <Col xs={12} className="mt-5">
-          <h1 >To do app</h1>
+          <h1>React To Do App</h1>
           <Form
            className="mt-2"
            onSubmit={handleSubmit}
