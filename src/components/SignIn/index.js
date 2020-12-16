@@ -1,20 +1,15 @@
-import   React                  from 'react';
-import { useState, useEffect }  from 'react';
-
-import Row                      from 'react-bootstrap/Row';
-import Col                      from 'react-bootstrap/Col';
-import Form                     from 'react-bootstrap/Form';
-import Button                   from 'react-bootstrap/Button';
+import   React                    from 'react';
+import { useState, useEffect }    from 'react';
+import { Row, Col, Form, Button } from  'react-bootstrap';
 
 const INITIALSTATE = {
   email: '',
   password: '',
 };
 
-
 /*
  * Naive implementation of user auth 
-*/
+ */
 const SignInFormBase = (props) => {
   const [userInfo, setUserInfo]   = useState(INITIALSTATE);
   const [error, setError ]        = useState(false);
